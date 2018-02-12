@@ -1,0 +1,62 @@
+<!doctype html> 
+<html lang="en">
+<head>
+  <title>Smartphones WishList</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Mukta+Malar" rel="stylesheet"> 
+  <link rel="shortcut icon" href="smartphones/images/img/appicon.ico" />  
+  <link href="smartphones/smartphones.css" rel="stylesheet" type="text/css" />  
+</head>
+
+<body>
+<!------------------>
+<header>
+  <div class="content"></div>
+</header>
+
+<div class="content">
+  <h1>My Smartphone Wish List</h1>
+  <div id="app">
+    <div class="search-wrapper">
+      <input type="text" v-model="keyword" placeholder="Search for Phones ..." />
+      <label>Search for Phones</label>
+    </div>
+    <div class="wrapper">
+      <div class="card" v-for="post in filteredList" v-on:click="toggleOnOff(post, $event)" v-bind:id="post.id">
+        <a target="_blank">
+                    <img v-bind:src="post.img" />
+					{{ post.title }}
+                    <small>Camera (back & front) pixels: {{ post.cameraback }} & {{ post.camerafront }}</small> 
+                    <small>Released: {{ post.date }}</small>
+					<small>Screen Size: {{ post.screensize }}</small>
+					<small>Dimensions: {{ post.dimensions }}</small>
+					<small>Memory: {{ post.memory }} | Storage: {{ post.storage }}</small>
+                </a>
+      </div>
+    </div>
+    <div class="bigcard" v-if="onOff">
+      <div class="cross" v-on:click="toggleOnOff()"></div>
+      <a v-bind:href="activePost.link" target="_blank">
+                <img v-bind:src="activePost.img" />
+                {{ activePost.title }}
+				<small>Released: {{ activePost.date }}</small>
+				<small>Screen Size: {{ activePost.screensize }}</small>
+				<small>Dimensions: {{ activePost.dimensions }}</small>
+				<small>Camera (back & front) pixels: {{ activePost.cameraback }} & {{ activePost.camerafront }}</small>				
+				<small>Memory: {{ activePost.memory }} | Storage: {{ activePost.storage }}</small>
+            </a>
+    </div>
+  </div>
+</div>
+
+
+<!------------------>
+<!-- JS files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>  
+  <!--  <script src="http://www.ryanhunter.org/portfolio/libs/vue/vue.min.js"></script>  -->
+  <script src="smartphones/smartphones.js"></script>	
+  
+  <!-- Note 2 Self:  Damn!! Vue.js is SO MUCH easier than Angular and React! Make sure to learn this stuff! -->
+</body>
+</html>
